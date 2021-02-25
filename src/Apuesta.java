@@ -1,7 +1,6 @@
 
 import javax.swing.DefaultListModel;
 import javax.swing.JDialog;
-import javax.swing.WindowConstants;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -9,9 +8,13 @@ import javax.swing.WindowConstants;
  * and open the template in the editor.
  */
 
-public class Apuesta extends javax.swing.JFrame {
+/**
+ * 
+ * @author Guillermo Dorado, Alumno 1º DAW
+ */
 
-   
+public class Apuesta extends javax.swing.JFrame {
+  
     public Apuesta() 
     {
         initComponents();
@@ -121,6 +124,11 @@ public class Apuesta extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * 
+     * @param evt Genera la ventana para añadir registro
+     */
+    
     private void bNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNuevoActionPerformed
         crearPartido añadePartido = new crearPartido(this);
         añadePartido.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -130,21 +138,45 @@ public class Apuesta extends javax.swing.JFrame {
         añadePartido.setVisible(Boolean.TRUE);
     }//GEN-LAST:event_bNuevoActionPerformed
 
+    /**
+     * 
+     * @param evt Permite borrar un registro
+     */
+    
+    
     private void bEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarActionPerformed
         borraPartido(listaQuiniela.getSelectedIndex());
     }//GEN-LAST:event_bEliminarActionPerformed
 
+    /**
+     * 
+     * @param evt General las cajas que contienen los registros de partidos y resultados
+     */
+    
+    
     private void bResetearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bResetearActionPerformed
         DefaultListModel modelovacio = new DefaultListModel();
         this.listaQuiniela.setModel(modelovacio);
         this.listaResultados.setModel(modelovacio);
     }//GEN-LAST:event_bResetearActionPerformed
 
-   
+   /**
+    * 
+    * @param n1 Valor participante 1
+    * @param n2 Valor participante 2
+    * @return <code>Resultado</code> Devuelve el resultado de la diferencia del encuentro
+    */
+    
+    
     public int cualquiera (int n1, int n2)
     {
         return (int)Math.floor((Math.random()*(n2-n1+1) + n1));
     }
+    
+    /**
+     * 
+     * @param evt Muestra el resultado del encuentro
+     */
     
     private void bRealizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRealizarActionPerformed
         DefaultListModel modeloquinielaresuelta = new DefaultListModel();
@@ -172,6 +204,11 @@ public class Apuesta extends javax.swing.JFrame {
         this.listaResultados.setModel(modeloquinielaresuelta);
     }//GEN-LAST:event_bRealizarActionPerformed
 
+    /**
+     * 
+     * @param partido Añade un encuentro a la tabla quiniela
+     */
+    
     
     public void partidoNuevo(String partido)
     {
@@ -186,6 +223,10 @@ public class Apuesta extends javax.swing.JFrame {
         this.listaQuiniela.setModel(modelonuevo);
     }
     
+    /**
+     * 
+     * @param indice Permite borrar un registro
+     */
   
     public void borraPartido(int indice)
     {
@@ -212,6 +253,10 @@ public class Apuesta extends javax.swing.JFrame {
         this.listaResultados.setModel(modelonuevoresultados);
     }
     
+    /**
+     * 
+     * @param args Argumentos del método principal
+     */
    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -226,19 +271,16 @@ public class Apuesta extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ventanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ventanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ventanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ventanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Apuesta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Apuesta().setVisible(true);
             }
