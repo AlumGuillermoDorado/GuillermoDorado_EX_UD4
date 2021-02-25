@@ -113,7 +113,7 @@ public class crearPartido extends javax.swing.JFrame
 
     /**
      * 
-     * @param args 
+     * @param args Argumentos
      */
     
     public static void main(String args[]) {
